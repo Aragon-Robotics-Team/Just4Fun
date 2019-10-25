@@ -1,26 +1,6 @@
 package art840.just4fun;
 
-import edu.wpi.first.wpilibj.TimedRobot;
+import art840.just4fun.util.RobotUtil;
 
-public class Robot extends TimedRobot {
-    public void robotInit() {
-    }
-
-    public void autonomousInit() {
-    }
-
-    public void autonomousPeriodic() {
-    }
-
-    public void teleopInit() {
-    }
-
-    public void teleopPeriodic() {
-    }
-
-    public void testInit() {
-    }
-
-    public void testPeriodic() {
-    }
+public class Robot extends RobotUtil {
 }
