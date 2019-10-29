@@ -13,10 +13,20 @@ public class Drivetrain extends Subsystem {
         talonL.set(ControlMode.PercentOutput, speedl);
         talonR.set(ControlMode.PercentOutput, speedr);
     }
-
+    
     public void drive(double speedr) {
         drive(speedr, speedr);
     }
+
+    public void arcadeDrive(double throttle, double rotation) {
+        double maxInput = Math.copySign(Math.max(Math.abs(throttle), Math.abs(rotation)), throttle);
+
+        if (throttle * rotation >= 0.0) {
+			drive(maxInput, throttle - rotation);
+		} else {
+			drive(throttle + rotation, maxInput);
+		}
+    } 
 
     protected void initDefaultCommand() {
     }
