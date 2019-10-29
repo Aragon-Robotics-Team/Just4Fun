@@ -13,7 +13,7 @@ public class Drivetrain extends Subsystem {
         talonL.set(ControlMode.PercentOutput, speedl);
         talonR.set(ControlMode.PercentOutput, speedr);
     }
-    
+
     public void drive(double speedr) {
         drive(speedr, speedr);
     }
