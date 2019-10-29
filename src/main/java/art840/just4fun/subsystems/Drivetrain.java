@@ -3,11 +3,20 @@ package art840.just4fun.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import art840.just4fun.RobotMap;
 
 public class Drivetrain extends Subsystem {
     TalonSRX talonL = new TalonSRX(RobotMap.portDriveTalonLeft);
     TalonSRX talonR = new TalonSRX(RobotMap.portDriveTalonRight);
+
+    VictorSPX victorL = new VictorSPX(RobotMap.portDriveVictorLeft);
+    VictorSPX victorR = new VictorSPX(RobotMap.portDriveVictorRight);
+
+    public Drivetrain() {
+        victorL.follow(talonL);
+        victorR.follow(talonR);
+    }
 
     public void drive(double speedl, double speedr) {
         talonL.set(ControlMode.PercentOutput, speedl);
