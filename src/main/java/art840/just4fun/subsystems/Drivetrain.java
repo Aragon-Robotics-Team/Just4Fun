@@ -18,16 +18,22 @@ public class Drivetrain extends Subsystem {
         victorL.follow(talonL);
         victorR.follow(talonR);
 
-        boolean coast = true;
+        boolean coast = false;
         NeutralMode coastMode = coast ? NeutralMode.Coast : NeutralMode.Brake;
 
         talonL.setNeutralMode(coastMode);
         talonR.setNeutralMode(coastMode);
         victorL.setNeutralMode(coastMode);
         victorR.setNeutralMode(coastMode);
+
+        talonR.setInverted(InvertType.InvertMotorOutput);
+        victorR.setInverted(InvertType.FollowMaster);
     }
 
     public void drive(double speedl, double speedr) {
+        speedl *= RobotMap.maxSpeed;
+        speedr *= RobotMap.maxSpeed;
+
         talonL.set(ControlMode.PercentOutput, speedl);
         talonR.set(ControlMode.PercentOutput, speedr);
     }
@@ -37,6 +43,9 @@ public class Drivetrain extends Subsystem {
     }
 
     public void arcadeDrive(double throttle, double rotation) {
+        throttle *= RobotMap.maxThrottle;
+        rotation *= RobotMap.maxRotation;
+
         double maxInput = Math.copySign(Math.max(Math.abs(throttle), Math.abs(rotation)), throttle);
 
         if (throttle * rotation >= 0.0) {
