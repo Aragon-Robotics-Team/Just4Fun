@@ -1,11 +1,12 @@
 package art840.just4fun.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import art840.just4fun.RobotMap;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drivetrain extends Subsystem {
     TalonSRX talonL = new TalonSRX(RobotMap.portDriveTalonLeft);
@@ -18,13 +19,7 @@ public class Drivetrain extends Subsystem {
         victorL.follow(talonL);
         victorR.follow(talonR);
 
-        boolean coast = false;
-        NeutralMode coastMode = coast ? NeutralMode.Coast : NeutralMode.Brake;
-
-        talonL.setNeutralMode(coastMode);
-        talonR.setNeutralMode(coastMode);
-        victorL.setNeutralMode(coastMode);
-        victorR.setNeutralMode(coastMode);
+        setCoastMode(RobotMap.coastMode);
 
         talonR.setInverted(InvertType.InvertMotorOutput);
         victorR.setInverted(InvertType.FollowMaster);
@@ -54,6 +49,15 @@ public class Drivetrain extends Subsystem {
 			drive(throttle + rotation, maxInput);
 		}
     } 
+
+    public void setCoastMode(boolean coast) {
+        NeutralMode coastMode = coast ? NeutralMode.Coast : NeutralMode.Brake;
+
+        talonL.setNeutralMode(coastMode);
+        talonR.setNeutralMode(coastMode);
+        victorL.setNeutralMode(coastMode);
+        victorR.setNeutralMode(coastMode);
+    }
 
     protected void initDefaultCommand() {
     }
