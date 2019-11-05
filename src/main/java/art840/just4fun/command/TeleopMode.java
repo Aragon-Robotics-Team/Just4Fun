@@ -4,6 +4,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class TeleopMode extends CommandGroup {
     public TeleopMode() {
-        addParallel(new Drive());
+        addParallel(new ArcadeDrive());
     }
 }
