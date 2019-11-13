@@ -20,6 +20,7 @@ public class Drivetrain extends Subsystem {
         victorR.follow(talonR);
 
         setCoastMode(RobotMap.coastMode);
+        setRamping(RobotMap.rampingTime);
 
         talonR.setInverted(InvertType.InvertMotorOutput);
         victorR.setInverted(InvertType.FollowMaster);
@@ -32,7 +33,7 @@ public class Drivetrain extends Subsystem {
         talonL.set(ControlMode.PercentOutput, speedl);
         talonR.set(ControlMode.PercentOutput, speedr);
     }
-    
+
     public void drive(double speedr) {
         drive(speedr, speedr);
     }
@@ -44,11 +45,11 @@ public class Drivetrain extends Subsystem {
         double maxInput = Math.copySign(Math.max(Math.abs(throttle), Math.abs(rotation)), throttle);
 
         if (throttle * rotation >= 0.0) {
-			drive(maxInput, throttle - rotation);
-		} else {
-			drive(throttle + rotation, maxInput);
-		}
-    } 
+            drive(maxInput, throttle - rotation);
+        } else {
+            drive(throttle + rotation, maxInput);
+        }
+    }
 
     public void setCoastMode(boolean coast) {
         NeutralMode coastMode = coast ? NeutralMode.Coast : NeutralMode.Brake;
@@ -57,6 +58,11 @@ public class Drivetrain extends Subsystem {
         talonR.setNeutralMode(coastMode);
         victorL.setNeutralMode(coastMode);
         victorR.setNeutralMode(coastMode);
+    }
+
+    public void setRamping(double rampingTime) {
+        talonR.configOpenloopRamp(rampingTime);
+        talonL.configOpenloopRamp(rampingTime);
     }
 
     protected void initDefaultCommand() {

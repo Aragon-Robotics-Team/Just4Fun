@@ -6,6 +6,7 @@ public class RobotMap {
     public static double maxRotation = 0.7;
 
     public static boolean coastMode = false;
+    public static double rampingTime = 0.0;
 
     public static int portDriveTalonLeft = 2;
     public static int portDriveTalonRight = 3;
