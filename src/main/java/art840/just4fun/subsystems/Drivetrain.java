@@ -1,11 +1,11 @@
 package art840.just4fun.subsystems;
 
+import art840.just4fun.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import art840.just4fun.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drivetrain extends Subsystem {
@@ -65,6 +65,5 @@ public class Drivetrain extends Subsystem {
         talonL.configOpenloopRamp(rampingTime);
     }
 
-    protected void initDefaultCommand() {
-    }
+    protected void initDefaultCommand() {}
 }

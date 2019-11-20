@@ -18,8 +18,11 @@
         "**/.wpilib": true,
         "**/lib": true // vision/lib jars
     },
-    "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    // Use `gradlew build` or `gradlew spotlessApply` instead
+    // config xml @ ./gradle/eclipse-style.xml
+    // "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
     "editor.formatOnSave": false,
+    "editor.defaultFormatter": null,
     "wpilib.autoStartRioLog": false,
     "wpilib.autoSaveOnDeploy": true,
     "wpilib.skipTests": true,

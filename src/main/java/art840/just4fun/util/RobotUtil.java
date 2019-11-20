@@ -4,34 +4,25 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class RobotUtil extends TimedRobot {
-    public void robotInit() {
-    }
-    
+    public void robotInit() {}
+
     public void robotPeriodic() {
         Scheduler.getInstance().run();
     }
-    
-    public void disabledInit() {
-    }
-    
-    public void disabledPeriodic() {
-    }
 
-    public void autonomousInit() {
-    }
+    public void disabledInit() {}
 
-    public void autonomousPeriodic() {
-    }
+    public void disabledPeriodic() {}
 
-    public void teleopInit() {
-    }
+    public void autonomousInit() {}
 
-    public void teleopPeriodic() {
-    }
+    public void autonomousPeriodic() {}
 
-    public void testInit() {
-    }
+    public void teleopInit() {}
 
-    public void testPeriodic() {
-    }
+    public void teleopPeriodic() {}
+
+    public void testInit() {}
+
+    public void testPeriodic() {}
 }

@@ -1,6 +1,8 @@
 plugins {
     id "java"
     id "edu.wpi.first.GradleRIO" version "2019.4.1"
+
+    id "com.diffplug.gradle.spotless" version "3.26.0" apply false
 }
 
 sourceCompatibility = JavaVersion.VERSION_11
@@ -62,3 +64,5 @@ jar {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS)
 }
+
+apply from: file("formatting.gradle")

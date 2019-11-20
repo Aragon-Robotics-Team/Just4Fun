@@ -17,5 +17,4 @@ public class ArcadeDrive extends Command {
     protected boolean isFinished() {
         return false;
     }
-
 }
