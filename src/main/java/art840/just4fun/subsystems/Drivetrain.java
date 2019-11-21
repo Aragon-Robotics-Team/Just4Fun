@@ -39,6 +39,9 @@ public class Drivetrain extends Subsystem {
     }
 
     public void arcadeDrive(double throttle, double rotation) {
+        throttle = Math.copySign(throttle * throttle, throttle);
+        rotation = Math.copySign(rotation * rotation, rotation);
+
         throttle *= RobotMap.maxThrottle;
         rotation *= RobotMap.maxRotation;
 
