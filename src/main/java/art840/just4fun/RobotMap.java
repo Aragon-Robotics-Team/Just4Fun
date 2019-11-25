@@ -1,13 +1,20 @@
 package art840.just4fun;
 
-public class RobotMap {
+public class RobotMap { // Drivetrain
     public static double maxSpeed = 0.7;
-    public static double maxThrottle = 1.0;
-    public static double maxRotation = 1.0;
-    public static double maxTicks = 8000;    
+    public static double maxTicks = 8000;
 
     public static boolean coastMode = false;
     public static double rampingTime = 0.2;
+
+    // FF
+    public static double ffPercent = 0.7;
+    public static double ffLeftVel = 5450;
+    public static double ffRightVel = 5650;
+
+    // Joystick
+    public static double maxThrottle = 1.0;
+    public static double maxRotation = 1.0;
 
     public static int portDriveTalonLeft = 2;
     public static int portDriveTalonRight = 3;

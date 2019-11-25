@@ -41,6 +41,9 @@ public class Drivetrain extends Subsystem {
 
         configEncoder(talonL);
         configEncoder(talonR);
+
+        talonL.config_kF(0, calcFF(RobotMap.ffLeftVel));
+        talonR.config_kF(0, calcFF(RobotMap.ffRightVel));
     }
 
     public void drive(double speedl, double speedr) {
@@ -100,8 +103,10 @@ public class Drivetrain extends Subsystem {
         talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
         talon.setSensorPhase(true);
         talon.setSelectedSensorPosition(0);
+    }
 
-        // talon.feedfor
+    double calcFF(double val) {
+        return (RobotMap.ffPercent * 1023) / val;
     }
 
     public void periodic() {
