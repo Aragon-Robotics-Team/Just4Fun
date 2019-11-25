@@ -49,6 +49,12 @@ public class Drivetrain extends Subsystem {
 
         talonL.set(ControlMode.PercentOutput, speedl);
         talonR.set(ControlMode.PercentOutput, speedr);
+
+        // speedl = RobotMap.maxTicks;
+        // speedr = RobotMap.maxTicks;
+
+        // talonL.set(ControlMode.Velocity, (int)(speedl));
+        // talonR.set(ControlMode.Velocity, (int)(speedr));
     }
 
     public void drive(double speedr) {
@@ -94,6 +100,8 @@ public class Drivetrain extends Subsystem {
         talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
         talon.setSensorPhase(true);
         talon.setSelectedSensorPosition(0);
+
+        // talon.feedfor
     }
 
     public void periodic() {
