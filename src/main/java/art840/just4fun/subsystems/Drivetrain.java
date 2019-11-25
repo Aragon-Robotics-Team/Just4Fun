@@ -112,9 +112,15 @@ public class Drivetrain extends Subsystem {
     public void periodic() {
         SmartDashboard.putNumber("Left Velocity", talonL.getSelectedSensorVelocity());
         SmartDashboard.putNumber("Left Position", talonL.getSelectedSensorPosition());
+        SmartDashboard.putNumber("Left Error", talonL.getClosedLoopError());
+        SmartDashboard.putNumber("Left Target", talonL.getClosedLoopTarget());
+        SmartDashboard.putNumber("Left Output", talonL.getMotorOutputPercent());
 
         SmartDashboard.putNumber("Right Velocity", talonR.getSelectedSensorVelocity());
         SmartDashboard.putNumber("Right Position", talonR.getSelectedSensorPosition());
+        SmartDashboard.putNumber("Right Error", talonR.getClosedLoopError());
+        SmartDashboard.putNumber("Right Target", talonR.getClosedLoopTarget());
+        SmartDashboard.putNumber("Right Output", talonR.getMotorOutputPercent());
 
         n++;
 
@@ -127,11 +133,11 @@ public class Drivetrain extends Subsystem {
         talonL.getFaults(lFault);
         talonR.getFaults(rFault);
 
-        System.out.println("Left: " + lFault + "\n");
-        System.out.println("Right: " + rFault + "\n");
+        // System.out.println("Left: " + lFault + "\n");
+        // System.out.println("Right: " + rFault + "\n");
 
-        SmartDashboard.putBoolean("Left Phase Bad", lFault.SensorOutOfPhase);
-        SmartDashboard.putBoolean("Right Phase Bad", rFault.SensorOutOfPhase);
+        // SmartDashboard.putBoolean("Left Phase Bad", lFault.SensorOutOfPhase);
+        // SmartDashboard.putBoolean("Right Phase Bad", rFault.SensorOutOfPhase);
     }
 
     protected void initDefaultCommand() {}
