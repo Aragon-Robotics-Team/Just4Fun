@@ -92,7 +92,8 @@ public class Drivetrain extends Subsystem {
 
     void configEncoder(TalonSRX talon) {
         talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
-        talon.setSensorPhase(false);
+        talon.setSensorPhase(true);
+        talon.setSelectedSensorPosition(0);
     }
 
     public void periodic() {
