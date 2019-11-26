@@ -68,5 +68,13 @@ public class Drivetrain extends Subsystem {
         talonL.configOpenloopRamp(rampingTime);
     }
 
+    public void setVoltageCompensation(double voltage){
+        talonR.configVoltageCompSaturation(voltage);
+        talonR.enableVoltageCompensation(true);
+        
+        talonL.configVoltageCompSaturation(voltage);
+        talonL.enableVoltageCompensation(true);
+    }
+
     protected void initDefaultCommand() {}
 }
