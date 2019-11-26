@@ -44,20 +44,22 @@ public class Drivetrain extends Subsystem {
 
         talonL.config_kF(0, calcFF(RobotMap.ffLeftVel));
         talonR.config_kF(0, calcFF(RobotMap.ffRightVel));
+
+        drive(0);
     }
 
     public void drive(double speedl, double speedr) {
         speedl *= RobotMap.maxSpeed;
         speedr *= RobotMap.maxSpeed;
 
-        talonL.set(ControlMode.PercentOutput, speedl);
-        talonR.set(ControlMode.PercentOutput, speedr);
+        // talonL.set(ControlMode.PercentOutput, speedl);
+        // talonR.set(ControlMode.PercentOutput, speedr);
 
-        // speedl = RobotMap.maxTicks;
-        // speedr = RobotMap.maxTicks;
+        speedl = RobotMap.maxTicks;
+        speedr = RobotMap.maxTicks;
 
-        // talonL.set(ControlMode.Velocity, (int)(speedl));
-        // talonR.set(ControlMode.Velocity, (int)(speedr));
+        talonL.set(ControlMode.Velocity, (int)(speedl));
+        talonR.set(ControlMode.Velocity, (int)(speedr));
     }
 
     public void drive(double speedr) {

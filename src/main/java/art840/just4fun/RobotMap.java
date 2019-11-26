@@ -1,7 +1,7 @@
 package art840.just4fun;
 
 public class RobotMap { // Drivetrain
-    public static double maxSpeed = 0.7;
+    public static double maxSpeed = 1.0;
     public static double maxTicks = 8000;
 
     public static boolean coastMode = false;
