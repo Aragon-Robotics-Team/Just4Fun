@@ -2,6 +2,7 @@ package art840.just4fun.subsystems;
 
 import art840.just4fun.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.Faults;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
@@ -29,6 +30,8 @@ public class Drivetrain extends Subsystem {
         configController(talonR);
         configController(victorL);
         configController(victorR);
+        
+        setVoltageCompensation(11);
 
         victorL.follow(talonL);
         victorR.follow(talonR);
@@ -58,8 +61,20 @@ public class Drivetrain extends Subsystem {
         speedl *= RobotMap.maxTicks;
         speedr *= RobotMap.maxTicks;
 
-        talonL.set(ControlMode.Velocity, (int)(speedl));
-        talonR.set(ControlMode.Velocity, (int)(speedr));
+        talonL.set(ControlMode.Velocity, (int)(speedl), DemandType.ArbitraryFeedForward, calc_A_FF(speedl));
+        talonR.set(ControlMode.Velocity, (int)(speedr), DemandType.ArbitraryFeedForward, calc_A_FF(speedr));
+    }
+    
+    double calc_A_FF(double speed) {
+        double FF = 0.00;
+        
+        if (Math.abs(speed) < 2) {
+            return 0;
+        } else if (speed > 0) {
+            return FF;
+        } else {
+            return -1 * FF;
+        }
     }
 
     public void drive(double speedr) {
@@ -94,6 +109,9 @@ public class Drivetrain extends Subsystem {
     public void setRamping(double rampingTime) {
         talonR.configOpenloopRamp(rampingTime);
         talonL.configOpenloopRamp(rampingTime);
+        
+        talonR.configClosedloopRamp(rampingTime);
+        talonL.configClosedloopRamp(rampingTime);
     }
 
     void configController(BaseMotorController talon) {
@@ -105,6 +123,10 @@ public class Drivetrain extends Subsystem {
         talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
         talon.setSensorPhase(true);
         talon.setSelectedSensorPosition(0);
+        
+        talon.config_kP(0, .2);
+        talon.config_IntegralZone(0, 300);
+        talon.config_kI(0, .001);
     }
 
     double calcFF(double val) {
