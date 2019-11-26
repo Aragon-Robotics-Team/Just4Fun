@@ -141,6 +141,14 @@ public class Drivetrain extends Subsystem {
         // SmartDashboard.putBoolean("Left Phase Bad", lFault.SensorOutOfPhase);
         // SmartDashboard.putBoolean("Right Phase Bad", rFault.SensorOutOfPhase);
     }
+    
+    public void setVoltageCompensation(double voltage) {
+        talonR.configVoltageCompSaturation(voltage);
+        talonR.enableVoltageCompensation(true);
+        
+        talonL.configVoltageCompSaturation(voltage);
+        talonL.enableVoltageCompensation(true);
+    }
 
     protected void initDefaultCommand() {}
 }
