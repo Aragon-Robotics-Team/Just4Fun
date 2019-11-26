@@ -55,8 +55,8 @@ public class Drivetrain extends Subsystem {
         // talonL.set(ControlMode.PercentOutput, speedl);
         // talonR.set(ControlMode.PercentOutput, speedr);
 
-        speedl = RobotMap.maxTicks;
-        speedr = RobotMap.maxTicks;
+        speedl *= RobotMap.maxTicks;
+        speedr *= RobotMap.maxTicks;
 
         talonL.set(ControlMode.Velocity, (int)(speedl));
         talonR.set(ControlMode.Velocity, (int)(speedr));
