@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,6 +27,23 @@ public class Drivetrain extends Subsystem {
     int n = 0;
 
     public Drivetrain() {
+
+        // var config = new TalonSRXConfiguration();
+
+        // config.slot0.kP = 0.2;
+        // config.slot0.kI = 1.0;
+        // config.slot0.integralZone = 100;
+        // config.voltageCompSaturation = 11;
+        // config.primaryPID.selectedFeedbackSensor = FeedbackDevice.QuadEncoder;
+
+        // enable vcomp
+        // invert
+        // follow
+        // encoder phase
+        // reset encoder positon
+
+        // talonL.configAllSettings(allConfigs)
+
         configController(talonL);
         configController(talonR);
         configController(victorL);
